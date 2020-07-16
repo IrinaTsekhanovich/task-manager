@@ -16,7 +16,7 @@ public class AddTask extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("/WEB-INF/view/updateTask.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/view/createTask.jsp").forward(req, resp);
     }
 
     @Override
@@ -32,19 +32,18 @@ public class AddTask extends HttpServlet {
         final String date = req.getParameter("date");
 
         String query;
-        if (!date.equals("")) query = "insert into tasks (name, description, status, deadline) values ('"+
-                name+"','"+description+"','"+status+"','"+date+"')";
-        else query = "insert into tasks (name, description, status) values ('"+
-                name+"','"+description+"','"+status+"')";
-        try {
-            int result = execUpdate(connection, query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (name!=null&&!name.equals("")){
+            if (!date.equals("")) query = "insert into tasks (name, description, status, deadline) values ('"+
+                    name+"','"+description+"','"+status+"','"+date+"')";
+            else query = "insert into tasks (name, description, status) values ('"+
+                    name+"','"+description+"','"+status+"')";
+            try {
+                int result = execUpdate(connection, query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
 
         resp.sendRedirect( req.getContextPath() + "/tasks");
     }
-
-
 }

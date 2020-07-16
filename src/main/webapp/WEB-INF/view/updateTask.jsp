@@ -1,3 +1,4 @@
+<%@ page import="webservice.model.Task" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,13 +9,24 @@
 </head>
 <body>
 <h2>Редактировать задачу</h2>
-<form method="post" action="add_task">
-    Название*: <input type="text" name="name"><br>
-    Описание: <input type="text" name="description"><br>
-    Статус*: <input type="radio" name="status" value="false" checked />Не выполнена
-    <input type="radio" name="status" value="true" />Выполнена<br>
-    Срок выполнения: <input type="date" id="date" name="date"><br>
-    <input type="submit" value="Добавить"><br>
+<%Task task = new Task();
+    try {
+        task = (Task) request.getAttribute("task");
+    } catch (ClassCastException e) {
+        e.printStackTrace();
+    }%>
+
+<form method="post" action="update_task">
+    <label><input type="number" hidden name="id" value="<%=task.getId()%>"/></label>
+    <label>Название*: <input type="text" name="name" value="<%=task.getName()%>"></label><br>
+    <label>Описание: <input type="text" name="description" value="<%=task.getDescription()%>"></label><br>
+    <%if (task.getStatus()){%>
+    <label>Статус*: <input type="radio" name="status" value="false" />Не выполнена</label>
+    <label><input type="radio" name="status" value="true" checked />Выполнена</label><br><%} else {%>
+    <label>Статус*: <input type="radio" name="status" value="false" checked />Не выполнена</label>
+    <label><input type="radio" name="status" value="true" />Выполнена</label><br><%}%>
+    <label>Срок выполнения: <input type="date" id="date" name="date" value="<%=task.getDate()%>"></label><br>
+    <input type="submit" value="Сохранить"><br>
 </form>
 <form method="get" action="tasks">
     <input type="submit" value="Отменить"><br>

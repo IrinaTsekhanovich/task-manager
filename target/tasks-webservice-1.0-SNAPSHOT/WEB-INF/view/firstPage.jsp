@@ -9,6 +9,7 @@
     </style>
 </head>
 <body>
+<h1>Персональный менеджер задач</h1>
 <form method="get"  action="<c:url value='/tasks'/>">
     <input type="submit" value="Задачи"/>
 </form>

@@ -64,6 +64,36 @@
         <url-pattern>/goals</url-pattern>
     </servlet-mapping>
 
+    <!-- Add Goal -->
+    <servlet>
+        <servlet-name>AddGoal</servlet-name>
+        <servlet-class>webservice.servlets.AddGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddGoal</servlet-name>
+        <url-pattern>/add_goal</url-pattern>
+    </servlet-mapping>
+
+    <!-- Select Goal -->
+    <servlet>
+        <servlet-name>SelectGoal</servlet-name>
+        <servlet-class>webservice.servlets.SelectGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SelectGoal</servlet-name>
+        <url-pattern>/select_goal</url-pattern>
+    </servlet-mapping>
+
+    <!-- Update Goal-->
+    <servlet>
+        <servlet-name>UpdateGoal</servlet-name>
+        <servlet-class>webservice.servlets.UpdateGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateGoal</servlet-name>
+        <url-pattern>/update_goal</url-pattern>
+    </servlet-mapping>
+
     <resource-ref>
         <res-ref-name>jdbs/mydatabase</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>

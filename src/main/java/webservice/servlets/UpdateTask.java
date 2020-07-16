@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static webservice.model.Executor.execQuery;
 import static webservice.model.Executor.execUpdate;
@@ -38,7 +37,7 @@ public class UpdateTask extends HttpServlet {
         }
 
         req.setAttribute("task", task);
-        req.getRequestDispatcher("/WEB-INF/view/createTask.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/view/updateTask.jsp").forward(req, resp);
     }
 
     @Override
@@ -54,24 +53,21 @@ public class UpdateTask extends HttpServlet {
         final String status = req.getParameter("status");
         final String date = req.getParameter("date");
 
-        String query = "update tasks "+
-                "set name = "+ name +
-                ", description = " + description +
-                ", status = " + status +
-                ", deadline = " + date +
-                " where tasks.id=" + id;
+        if (name!=null&&!name.equals("")) {
+            String query = "update tasks " +
+                    "set name = '" + name + "'" +
+                    (description.equals("") ? "" : ", description = '" + description + "'") +
+                    ", status = '" + status + "'" +
+                    (date.equals("")?"":", deadline = '" + date + "'") +
+                    " where tasks.id=" + id;
 
-//                    (date.equals("") ?"set date ="+date: "set date=null")
-
-        try {
-            int result = execUpdate(connection, query);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            try {
+                int result = execUpdate(connection, query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-
 
         resp.sendRedirect( req.getContextPath() + "/tasks");
     }
-
-
 }

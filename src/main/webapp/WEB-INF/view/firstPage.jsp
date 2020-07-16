@@ -1,6 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>Менеджер задач</title>
@@ -9,10 +7,11 @@
     </style>
 </head>
 <body>
-<form method="get"  action="<c:url value='/tasks'/>">
+<h1>Персональный менеджер задач</h1>
+<form method="get"  action="tasks">
     <input type="submit" value="Задачи"/>
 </form>
-<form method="get" action="<c:url value='/goals'/>">
+<form method="get" action="goals">
     <input type="submit" value="Цели"/>
 </form>
 </body>

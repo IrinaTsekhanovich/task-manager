@@ -1,6 +1,5 @@
 <%@ page import="webservice.model.Goal" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,11 +9,12 @@
     </style>
 </head>
 <body>
-<form method="get"  action="<c:url value='/tasks'/>">
+<form method="get"  action="tasks">
     <input type="submit" value="Перейти к задачам"/>
 </form>
-<form method="get" action="<c:url value='/create_task'/>">
-    <input type="submit" value="Добавить задачу"/>
+<h1>Мои цели</h1>
+<form method="get" action="add_goal">
+    <input type="submit" value="Добавить цель"/>
 </form>
 <ul>
 <%
@@ -24,17 +24,18 @@
     } catch (ClassCastException e) {
         e.printStackTrace();
     }
-
-    for (Goal goal:goals) {
-%>
-<p>Номер: <%=goal.getId()%></p>
-<p>Описание: <%=goal.getName()%></p>
-<form method="get" action="<c:url value='/update_task'/>">
-    <input type="number" hidden name="id" value="${task.id}"/>
+    for (Goal goal:goals) {%>
+<p><%=goal.getName()%></p>
+    <form method="get" action="select_goal">
+        <input type="number" hidden name="id" value="<%=goal.getId()%>"/>
+        <input type="submit" value="Подробнее"/>
+    </form>
+<form method="get" action="update_goal">
+    <input type="number" hidden name="id" value="<%=goal.getId()%>"/>
     <input type="submit" value="Редактировать"/>
 </form>
-<form method="post" action="<c:url value='/delete_task'/>">
-    <input type="number" hidden name="id" value="${task.id}"/>
+<form method="post" action="delete_goal">
+    <input type="number" hidden name="id" value="<%=goal.getId()%>"/>
     <input type="submit" name="delete" value="Удалить"/>
 </form>
     <hr/>

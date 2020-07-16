@@ -31,10 +31,7 @@ for (Task task : tasks) {
     <p>Задача: <%=task.getName()%></p>
 <%if (task.getDescription()!=null&&task.getDescription().length()>0){%>
     <p>Описание: <%=task.getDescription()%></p><%}%>
-    <%String status;
-         status = task.getStatus()?"Выполнена":"Не выполнена";
-    %>
-    <p>Статус: <%=status%></p>
+    <p>Статус: <%=task.getStatus()?"Выполнена":"Не выполнена"%></p>
 <%if (task.getDate()!=null){%>
     <p>Срок выполнения: <%=task.getDate()%></p><%}%>
         <form method="get" action="update_task">
