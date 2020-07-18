@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Adds goal
+ *
+ * This servlet inserts one goal into table goals in Database.*/
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

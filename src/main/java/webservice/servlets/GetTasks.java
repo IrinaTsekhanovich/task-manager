@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Gets all tasks
+ *
+ * This servlet selects all tasks from table tasks in Database.*/
+
 import webservice.model.Task;
 
 import javax.servlet.ServletException;
@@ -14,11 +18,12 @@ import java.util.ArrayList;
 import static webservice.model.Executor.execQuery;
 
 public class GetTasks extends HttpServlet{
-    private ArrayList<Task> tasks;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        ArrayList<Task> tasks = new ArrayList<Task>();
 
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         String query = "select * from tasks\n" +

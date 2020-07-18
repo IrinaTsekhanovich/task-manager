@@ -1,5 +1,10 @@
 package webservice.servlets;
 
+/** Deletes task from goal
+ *
+ * This servlet updates table tasks in Database:
+ * it sets goal_id as NULL for current task.*/
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

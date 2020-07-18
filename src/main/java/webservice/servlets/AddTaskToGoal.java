@@ -1,5 +1,10 @@
 package webservice.servlets;
 
+/** Adds task to goal
+ *
+ * This servlet updates table tasks in Database:
+ * it sets goal_id as current goal's id for current task.*/
+
 import webservice.model.Task;
 
 import javax.servlet.ServletException;

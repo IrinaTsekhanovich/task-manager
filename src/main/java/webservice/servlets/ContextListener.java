@@ -1,5 +1,7 @@
 package webservice.servlets;
 
+/** Starts before all other servlets.*/
+
 import webservice.model.ConnectionPool;
 
 import javax.naming.NamingException;

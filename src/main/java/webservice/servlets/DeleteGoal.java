@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Deletes goal
+ *
+ * This servlet deletes one row with current goal's id from table goals in Database.*/
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

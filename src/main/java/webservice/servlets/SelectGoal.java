@@ -1,5 +1,10 @@
 package webservice.servlets;
 
+/** Gets current goal's information
+ *
+ * This servlet selects current goal from table goals in Database
+ * and gives the information about subgoals and tasks.*/
+
 import webservice.model.Goal;
 import webservice.model.Task;
 
@@ -15,13 +20,14 @@ import java.util.ArrayList;
 import static webservice.model.Executor.execQuery;
 
 public class SelectGoal extends HttpServlet {
-    private ArrayList<Goal> subgoals;
-    private Goal goal;
-    private ArrayList<Task> tasks;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        ArrayList<Goal> subgoals = new ArrayList<Goal>();
+        Goal goal = new Goal();
+        ArrayList<Task> tasks = new ArrayList<Task>();
 
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         final String goal_id = req.getParameter("id");

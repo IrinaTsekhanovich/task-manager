@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Gets all main goals
+ *
+ * This servlet selects all main goals from table goals in Database.*/
+
 import webservice.model.Goal;
 
 import javax.servlet.ServletException;
@@ -14,11 +18,11 @@ import java.util.ArrayList;
 import static webservice.model.Executor.execQuery;
 
 public class GetGoals extends HttpServlet {
-    private ArrayList<Goal> goals;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        ArrayList<Goal> goals = new ArrayList<Goal>();
 
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         String query = "select distinct goals.id, goals.name from goals\n" +

@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Updates task's information
+ *
+ * This servlet updates the information about current task in table tasks in Database.*/
+
 import webservice.model.Task;
 
 import javax.servlet.ServletException;
@@ -18,10 +22,13 @@ public class UpdateTask extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         final String id = req.getParameter("id");
+
         String query = "select * from tasks where tasks.id="+id+";";
         Task task = new Task();
+
         try {
             task = execQuery(connection, query, result -> {
                 Task t = new Task();

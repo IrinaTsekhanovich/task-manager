@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Adds task
+ *
+ * This servlet inserts one new task into table tasks in Database.*/
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

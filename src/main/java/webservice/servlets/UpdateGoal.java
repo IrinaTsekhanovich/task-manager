@@ -1,5 +1,9 @@
 package webservice.servlets;
 
+/** Updates goal's name
+ *
+ * This servlet updates name of current goal in table goals in Database.*/
+
 import webservice.model.Goal;
 
 import javax.servlet.ServletException;
@@ -18,10 +22,13 @@ public class UpdateGoal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         final String id = req.getParameter("id");
+
         String query = "select * from goals where goals.id="+id;
         Goal goal = new Goal();
+
         try {
             goal = execQuery(connection, query, result -> {
                 Goal t = new Goal();

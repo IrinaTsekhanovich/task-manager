@@ -1,11 +1,16 @@
 package webservice.servlets;
 
+/** Adds subgoal
+ *
+ * This servlet inserts one new goal into table goals in Database
+ * and insert one row parent-child into table subgoals_goals
+ * where new goal is a child (subgoal) and current goal is a parent.*/
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
