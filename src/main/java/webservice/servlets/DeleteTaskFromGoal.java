@@ -5,13 +5,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import static webservice.model.Executor.execUpdate;
 
-public class DeleteTask extends HttpServlet {
+public class DeleteTaskFromGoal extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -20,15 +19,17 @@ public class DeleteTask extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         Connection connection = (Connection) getServletContext().getAttribute("connection");
-        final String id = req.getParameter("id");
+        final String task_id = req.getParameter("task_id");
+        final String goal_id = req.getParameter("goal_id");
 
-        String query = "delete from tasks where tasks.id="+id+";";
+        String query = "update tasks set goal_id=null where id = " + task_id;
         try {
             int result = execUpdate(connection, query);
-        } catch (SQLException e) {
+        } catch (
+                SQLException e) {
             e.printStackTrace();
         }
 
-        resp.sendRedirect( req.getContextPath() + "/tasks");
+        resp.sendRedirect(req.getContextPath() + "/select_goal?id="+goal_id);
     }
 }

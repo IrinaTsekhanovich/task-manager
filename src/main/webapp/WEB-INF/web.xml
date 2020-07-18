@@ -93,7 +93,47 @@
         <servlet-name>UpdateGoal</servlet-name>
         <url-pattern>/update_goal</url-pattern>
     </servlet-mapping>
+    
+    <!-- Add Task To Goal -->
+    <servlet>
+        <servlet-name>AddTaskToGoal</servlet-name>
+        <servlet-class>webservice.servlets.AddTaskToGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTaskToGoal</servlet-name>
+        <url-pattern>/add_task_to_goal</url-pattern>
+    </servlet-mapping>
 
+    <!-- Delete Task From Goal -->
+    <servlet>
+        <servlet-name>DeleteTaskFromGoal</servlet-name>
+        <servlet-class>webservice.servlets.DeleteTaskFromGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteTaskFromGoal</servlet-name>
+        <url-pattern>/delete_task_from_goal</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Delete Goal -->
+    <servlet>
+        <servlet-name>DeleteGoal</servlet-name>
+        <servlet-class>webservice.servlets.DeleteGoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteGoal</servlet-name>
+        <url-pattern>/delete_goal</url-pattern>
+    </servlet-mapping>
+
+    <!-- Add Subgoal-->
+    <servlet>
+        <servlet-name>AddSubgoal</servlet-name>
+        <servlet-class>webservice.servlets.AddSubgoal</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddSubgoal</servlet-name>
+        <url-pattern>/add_subgoal</url-pattern>
+    </servlet-mapping>
+    
     <resource-ref>
         <res-ref-name>jdbs/mydatabase</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>

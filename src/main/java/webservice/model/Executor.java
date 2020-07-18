@@ -37,7 +37,6 @@ public class Executor {
                 st.executeUpdate(q);
                 st.close();
             }
-            connection.close();
         } catch (SQLException e) {
             try{
                 connection.rollback();
